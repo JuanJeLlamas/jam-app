@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
+
 const userSchema = new Schema(
   {
     username: {
@@ -20,9 +20,43 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    genre: [
+      {
+        type: String,
+        enum: ["salsa", "rock", "pop", "dj", "flamenco", "mariachi"],
+        required: true,
+      }
+    ],
+    description: {
+      type: String
+    },
+    songs: {
+      type: [String]
+    },
+    imageShow: {
+      type: [String]
+    },
+    videoShow: {
+      type: [String]
+    },
+    contact: {
+      type: String,
+      required: true,
+    },
+    imageProfile: {
+      type: String,
+    },
+    
+    // favourite: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User",
+    //   }
+    // ]     ESTO PARA EL BONUS
+
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
+   
     timestamps: true,
   }
 );
