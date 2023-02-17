@@ -3,17 +3,27 @@ const { Schema, model } = require("mongoose");
 
 const commentSchema = new Schema(
     {
-        name: String,
-        comment: String,
-        imageProfile: String
-
-
+        username: {
+            type: Schema.Types.ObjectId,
+            ref: User
+        },
+        comment: {
+            type: String
+        },
+        artistUser: {
+            type: Schema.Types.ObjectId,
+            ref: User
+        }
     },
     {
-        timestamps: true,
+        timestamps: true
     }
+
 );
 
 const Comments = model("Comments", commentSchema);
-
 module.exports = Comments;
+
+
+
+
