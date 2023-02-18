@@ -108,19 +108,25 @@ router.post('/login', async (req, res, next) => {
       return
     }
 
-    // res.redirect('/')
-
     // Mantener activa una sesion -----------------------------
 
     req.session.activeUser = userLogin
     req.session.save(() => {
-  
-        
-        res.redirect("/");
-      })
+      res.redirect('/') // ! **Debemos redirigirlo al perfil del usuario **////
+    })
   } catch (error) {
     next(error)
   }
 })
+
+// Cerrar sesiones activas---------------------------------------
+
+router.get("/logout", (req, res, next) => {
+
+    req.session.destroy(() => {
+      res.redirect("/")
+    })
+  
+  })
 
 module.exports = router
