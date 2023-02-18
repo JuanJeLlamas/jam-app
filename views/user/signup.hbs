@@ -1,15 +1,17 @@
+
+  
 <div id="form">
   <h2>Registro de usuario</h2>
   <form action="/profile/signup" method="POST">
 
     <label>
-      Nombre de usuario
+      Nombre de usuario          
       <input type="text" name="username" placeholder="Tu nombre de usuario" />
     </label>
     <br />
 
     <label>
-      Email
+      Email      
       <input type="email" name="email" placeholder="Tu email" />
     </label>
     <br />
@@ -20,10 +22,14 @@
     </label>
     <br />
 
-    <button type="submit">Registrarse</button>
+    <button class="btn btn-warning" type="submit">Registrarse</button>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
+</div>
+<div id="fondoregistro">
+
+
 </div>

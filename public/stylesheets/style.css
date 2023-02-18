@@ -10,3 +10,38 @@ a {
 h1 {
   color: 15px;
 }
+
+form {
+  
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 15px;
+  border-color: transparent;
+  box-shadow: 4px 5px 4px #310202;
+  background-image: url("../images/musicafondo.jpg");
+}
+
+#form h2 {
+  text-align: center;
+  
+}
+
+#fondoregistro {
+
+ background-image: url("../images/musicafondo.jpg");
+}
+
+.btn-warning {
+  margin-top: 25;
+  margin-left: 100px;
+}
+
+#form label  {
+    display: block;
+    margin-left: 30px;
+  }
+  #form input {
+    display: inline-block;
+    margin-left: 10px;
+  }
