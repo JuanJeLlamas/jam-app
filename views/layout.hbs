@@ -12,11 +12,22 @@
 
 <nav>
   <a href="/">Inicio</a>
-  <a href="/profile/signup">Registrate</a>
+   <a href="/groups/list">Ver grupos</a>
+ 
+  {{#if isUserActive }}
+
+ <a href="/private-profile">Ir a mi perfil</a>
+ <a href="/profile/logout">Cerrar sesión</a>
+{{else}}
+
+ <a href="/profile/signup">Registrate</a>
   <a href="/profile/login">Accede a tu cuenta</a>
-  <a href="/profile/logout">Cerrar sesión</a>
-  <a href="/private-profile">Ir a mi perfil</a>
-  <a href="/groups/list">Ver grupos</a>
+ 
+
+  {{/if}}
+ 
+  
+ 
 </nav>
     {{{body}}}
 

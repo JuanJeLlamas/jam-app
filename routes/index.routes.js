@@ -6,7 +6,8 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-
+const { updateLocals } = require("../middleware/user-middlewares.js")
+router.use(updateLocals)
 
 const profileRoute = require("./profile.routes.js")
 router.use("/profile", profileRoute)
