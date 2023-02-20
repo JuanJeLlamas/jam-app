@@ -1,35 +1,18 @@
 <h2>Este es tu perfil</h2>
-<h5>Nombre:{{username}} </h5>
 
-<h5>Emai:{{details.username}} </h5>
-<form action="">
-  
-  <br />
-  
-  <label>
-    Teléfono
-    <input type="tel" name="contact" placeholder="Teléfono" />
-  </label>
-  <br />
 
-  <br />
-  {{#if isUserArtist}}
-    <label for=""></label>
-    <label for="genre">Género musical</label>
-    <select name="genre">
-      <option value="pop">Pop</option>
-      <option value="rock">Rock</option>
-    </select>
-    <label for="">Descripcion</label>
-    <br />
-    <textarea name="description" rows="10" cols="40">Escribe aquí tu descripción</textarea>
-    <br />
-    <label>
-      Adjuntar
-      <input type="file" name="imageShow" placeholder="Adjunta tu trabajo" />
-    </label>
-  {{/if}}
+<h5>Nombre: {{details.username}} </h5>
+<h5>Email: {{details.email}} </h5>
+<h5>Teléfono: {{details.contact}} </h5>
+<h5>Descripción: {{details.description}} </h5>
+<h5>Imagen de perfil: {{details.imageProfile}} </h5>
+<h5>Imagenes de eventos: {{details.imageShow}} </h5>
+<h5>Videos: {{details.videoShow}} </h5>
+<h5>Caniciones: {{details.songs}} </h5>
+
 
   <br />
-  <button type="submit">Enviar informacion</button>
-</form>
+  <a href="/private-profile/edit">
+  <button type="submit">Editar información</button>
+  </a>
+   <button type="submit">Eliminar perfil</button>

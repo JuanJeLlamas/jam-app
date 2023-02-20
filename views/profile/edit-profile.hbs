@@ -1,0 +1,39 @@
+<h2>Edita tu perfil</h2>
+<form action="/private-profile/edit" method="POST">
+<label for="">Nombre de usuario:  
+<input type="text" name="username" placeholder="" />
+</label>
+<br>
+<label for="">Email:  
+<input type="email" name="email" placeholder="" />
+</label>
+<br>
+</label>
+<label for="">Telefono:  
+<input type="tel" name="contact" placeholder="" />
+</label>
+
+<br>
+{{#if isUserArtist}}
+  <label for=""></label>
+
+  <label for="genre">Género musical</label>
+  <select name="genre">
+    <option value="pop">Pop</option>
+    <option value="rock">Rock</option>
+  </select>
+  <br>
+  <label for="">Descripcion</label>
+  <br />
+  <textarea name="description" rows="10" cols="40">Escribe aquí tu descripción</textarea>
+  <br />
+  <label>
+    Adjuntar
+    <input type="file" name="imageShow" placeholder="Adjunta tu trabajo" />
+  </label>
+  </form>
+{{/if}}
+
+<a href="/private-profile">
+    <button> Guardar cambios </button>
+</a>

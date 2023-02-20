@@ -28,7 +28,7 @@ const updateLocals = (req, res, next) => {
     res.locals.activeUser = false;
   } else { 
     if (req.session.activeUser.role === "artista") {
-    res.locals.activeUser = true
+    res.locals.isUserArtist = true
   }
     res.locals.activeUser = true;
   
