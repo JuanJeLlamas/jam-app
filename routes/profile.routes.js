@@ -4,6 +4,9 @@ const router = express.Router()
 const User = require('../models/User.model.js')
 const bcrypt = require('bcryptjs')
 
+const { isLoggedIn, isArtist } = require("../middleware/user-middlewares.js")
+
+
 //GET /profile/signup----------Para crear una cuenta--------
 
 router.get('/signup', (req, res, next) => {
@@ -112,7 +115,7 @@ router.post('/login', async (req, res, next) => {
 
     req.session.activeUser = userLogin
     req.session.save(() => {
-      res.redirect('/') // ! **Debemos redirigirlo al perfil del usuario **////
+      res.redirect('/private-profile') 
     })
   } catch (error) {
     next(error)
@@ -130,3 +133,4 @@ router.get("/logout", (req, res, next) => {
   })
 
 module.exports = router
+
