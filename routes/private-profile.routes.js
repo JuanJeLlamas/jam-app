@@ -14,7 +14,6 @@ router.get('/', isLoggedIn, async (req, res, next) => {
   console.log(req.session.activeUser._id) // ESTE ES EL USUARIO QUE ESTA HACIENDO LA LLAMADA, EL USUARIO ACTIVO, TENEMOS ACCESO A ESTO EN TODAS LAS RUTAS
 
   try {
-    const { userId } = req.params
     const response = await User.findById(req.session.activeUser._id)
     res.render('profile/user-profile.hbs', {
       details: response,
@@ -25,12 +24,12 @@ router.get('/', isLoggedIn, async (req, res, next) => {
 })
 
 //GET ----Edicion de perfiles
-router.get('/edit', (req, res, next) => {
+router.get('/edit', isLoggedIn, (req, res, next) => {
   res.render('profile/edit-profile.hbs')
 })
 
 //POST ----Edicion de perfiles
-router.post('/edit', async (req, res, next) => {
+router.post('/edit', isLoggedIn, async (req, res, next) => {
   console.log(req.session.activeUser._id)
   try {
     const userEdit = await User.findByIdAndUpdate(req.session.activeUser._id, {
@@ -46,6 +45,8 @@ router.post('/edit', async (req, res, next) => {
       contact: req.body.contact,
       imageProfile: req.body.imageProfile
     })
+
+    
    
     
     res.redirect('/private-profile')
@@ -53,5 +54,21 @@ router.post('/edit', async (req, res, next) => {
     next(error)
   }
 })
+
+
+
+router.post("/delete", isLoggedIn, (req, res, next) => {
+  User.findByIdAndDelete(req.session.activeUser._id)
+    .then(() => {
+      req.session.destroy(() => {
+        res.redirect("/");
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+})
+
+
 
 module.exports = router
