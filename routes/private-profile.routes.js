@@ -56,7 +56,6 @@ router.post('/edit', isLoggedIn, async (req, res, next) => {
 })
 
 
-
 router.post("/delete", isLoggedIn, (req, res, next) => {
   User.findByIdAndDelete(req.session.activeUser._id)
     .then(() => {
