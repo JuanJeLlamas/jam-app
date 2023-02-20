@@ -10,6 +10,17 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
+router.get("/:userId", isLoggedIn, async (req, res, next) => {
+  try {
+      const { userId } = req.params;
+      const response = await User.findById(userId)
+      res.render("profile/user-profile.hbs", {
+          details: response,
+      });
+  } catch (error) {
+      next(error);
+  }
+});
 
 
 

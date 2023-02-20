@@ -117,7 +117,7 @@ router.post('/login', async (req, res, next) => {
     req.session.activeUser = userLogin
     req.session.save(() => {
       
-      res.redirect("/private-profile")
+      res.redirect("/")
     })
   } catch (error) {
     next(error)
@@ -133,6 +133,18 @@ router.get("/logout", (req, res, next) => {
     })
   
   })
+
+
+
+
+
+
+  
+
+
+
+
+  
 
 module.exports = router
 

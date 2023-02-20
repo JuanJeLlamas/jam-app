@@ -3,9 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+/* a {
+
   color: #00b7ff;
-}
+} */
 
 h1 {
   color: 15px;
@@ -20,6 +21,7 @@ form {
   border-color: transparent;
   box-shadow: 4px 5px 4px #310202;
   background-image: url("../images/musicafondo.jpg");
+  
 }
 
 #form h2 {
@@ -30,6 +32,7 @@ form {
 #fondoregistro {
 
  background-image: url("../images/musicafondo.jpg");
+ background-repeat: no-repeat;
 }
 
 .btn-success {

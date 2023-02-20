@@ -25,12 +25,12 @@ const isParticular = (req, res, next) => {
 
 const updateLocals = (req, res, next) => {
   if (req.session.activeUser === undefined) {
-    res.locals.isUserActive = false;
+    res.locals.activeUser = false;
   } else { 
     if (req.session.activeUser.role === "artista") {
-    res.locals.isUserArtist = true
+    res.locals.activeUser = true
   }
-    res.locals.isUserActive = true;
+    res.locals.activeUser = true;
   
    }
   next();
