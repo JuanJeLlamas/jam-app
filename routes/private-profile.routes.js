@@ -31,8 +31,10 @@ router.get('/edit', (req, res, next) => {
 
 //POST ----Edicion de perfiles
 router.post('/edit', async (req, res, next) => {
+  console.log(req.session.activeUser._id)
   try {
     const userEdit = await User.findByIdAndUpdate(req.session.activeUser._id, {
+      
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
@@ -44,6 +46,8 @@ router.post('/edit', async (req, res, next) => {
       contact: req.body.contact,
       imageProfile: req.body.imageProfile
     })
+   
+    
     res.redirect('/private-profile')
   } catch (error) {
     next(error)
