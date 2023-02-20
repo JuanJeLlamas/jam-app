@@ -8,7 +8,7 @@ router.get("/list", async (req, res, next) => {
  
     try {
 
-      const response = await User.find( {role: {$in: req.params.role } } );
+      const response = await User.find( {role: {$in: ["artista"] } } );
   
       res.render("groups/list-artist.hbs", {
         eachArtist: response,
