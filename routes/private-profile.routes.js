@@ -3,19 +3,14 @@ const router = express.Router();
 
 const { isLoggedIn, isArtist, isParticular } = require("../middleware/user-middlewares.js")
 
-// GET "/profile" => renderiza una vista privada de artista
-router.get("/artist", isLoggedIn, isArtist, (req, res, next) => {
+// GET "/private-profile" => renderiza una vista privada de artista
+router.get("/", isLoggedIn, (req, res, next) => {
 
-  res.render("profile/artist-profile.hbs")
+  res.render("profile/user-profile.hbs")
 
 })
 
-router.get("/particular", isLoggedIn, isParticular, (req, res, next) => {
 
-    res.render("profile/particular-profile.hbs")
-  
-  })
-  
 
 
 

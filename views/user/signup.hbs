@@ -1,32 +1,40 @@
-
-  
 <div id="form">
   <h2>Registro de usuario</h2>
   <form action="/profile/signup" method="POST">
 
     <label>
-      Usuario          
-      <input type="text" id="uno" name="username" placeholder="Tu nombre de usuario" />
+      Usuario
+      <input
+        type="text"
+        id="uno"
+        name="username"
+        placeholder="Tu nombre de usuario"
+      />
     </label>
     <br />
 
     <label>
-      Email      
-      <input  type="email" id="dos" name="email" placeholder="Tu email" />
+      Email
+      <input type="email" id="dos" name="email" placeholder="Tu email" />
     </label>
     <br />
 
     <label>
       Contraseña
-      <input id="tres" type="password" name="password" placeholder="Tu contraseña" />
+      <input
+        id="tres"
+        type="password"
+        name="password"
+        placeholder="Tu contraseña"
+      />
     </label>
     <br />
 
-    <select name="user">
-  <option value="value1">Particular</option>
-  <option value="value2">Artista</option>
-</select>
-<br>
+    <select name="role">
+      <option value="particular">Particular</option>
+      <option value="artista">Artista</option>
+    </select>
+    <br />
 
     <button class="btn btn-success" type="submit">Registrarse</button>
 
@@ -36,6 +44,5 @@
   </form>
 </div>
 <div id="fondoregistro">
-
 
 </div>
