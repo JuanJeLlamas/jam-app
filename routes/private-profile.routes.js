@@ -3,6 +3,8 @@ const router = express.Router()
 
 const User = require('../models/User.model.js')
 
+const uploader = require('../middleware/cloudinary.js')
+
 const {
   isLoggedIn,
   isArtist,
@@ -29,45 +31,69 @@ router.get('/edit', isLoggedIn, (req, res, next) => {
 })
 
 //POST ----Edicion de perfiles
-router.post('/edit', isLoggedIn, async (req, res, next) => {
-  console.log(req.session.activeUser._id)
-  try {
-    const userEdit = await User.findByIdAndUpdate(req.session.activeUser._id, {
-      
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      genre: req.body.genre,
-      description: req.body.description,
-      songs: req.body.songs,
-      imageShow: req.body.imageShow,
-      videoShow: req.body.videoShow,
-      contact: req.body.contact,
-      imageProfile: req.body.imageProfile
-    })
+router.post(
+  '/edit',
+  // uploader.single('imageShow'),
+  // uploader.single('songs'),
+  // uploader.single('videoShow'),
+  uploader.single('imageProfile'),
+  isLoggedIn,  async (req, res, next) => {
 
-    
-   
-    
-    res.redirect('/private-profile')
-  } catch (error) {
-    next(error)
-  }
-})
+    console.log(req.session.activeUser._id)
 
+    // let imageShow
+    // if (req.file !== undefined) {
+    //   imageShow = req.file.path
+    // }
+    // let songs
+    // if (req.file !== undefined) {
+    //   songs = req.file.path
+    // }
 
-router.post("/delete", isLoggedIn, (req, res, next) => {
+    // let videoShow
+    // if (req.file !== undefined) {
+    //   videoShow = req.file.path
+    // }
+
+    let imageProfile
+    if (req.file !== undefined) {
+      imageProfile = req.file.path
+    }
+
+    try {
+      const userEdit = await User.findByIdAndUpdate(
+        req.session.activeUser._id,
+        {
+          username: req.body.username,
+          email: req.body.email,
+          password: req.body.password,
+          genre: req.body.genre,
+          description: req.body.description,
+          songs: req.body.songs,
+          imageShow: req.body.imageShow,
+          videoShow: req.body.videoShow,
+          contact: req.body.contact,
+          imageProfile: imageProfile,
+        },
+      )
+
+      res.redirect('/private-profile')
+    } catch (error) {
+      next(error)
+    }
+  },
+)
+
+router.post('/delete', isLoggedIn, (req, res, next) => {
   User.findByIdAndDelete(req.session.activeUser._id)
     .then(() => {
       req.session.destroy(() => {
-        res.redirect("/");
-      });
+        res.redirect('/')
+      })
     })
     .catch((err) => {
-      next(err);
-    });
+      next(err)
+    })
 })
-
-
 
 module.exports = router

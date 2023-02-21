@@ -1,40 +1,67 @@
 <h2>Edita tu perfil</h2>
-<form action="/private-profile/edit" method="POST">
-<label for="">Nombre de usuario:  
-<input type="text" name="username" placeholder=" " />{{isUserArtist.username}}
-</label>
-<br>
-<label for="">Email:  
-<input type="email" name="email" placeholder="" />
-</label>
-<br>
-</label>
-<label for="">Telefono:  
-<input type="tel" name="contact" placeholder="" />
-</label>
-
-<br>
-{{#if isUserArtist}}
-  <label for=""></label>
-
-  <label for="genre">Género musical</label>
-  <select name="genre">
-    <option value="pop">Pop</option>
-    <option value="rock">Rock</option>
-  </select>
-  <br>
-  <label for="">Descripcion</label>
+<form
+  action="/private-profile/edit"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <label for="username">Nombre de usuario:
+    <input type="text" name="username" placeholder=" " />
+  </label>
   <br />
-  <textarea name="description" rows="10" cols="40">Escribe aquí tu descripción</textarea>
+  <label for="email">Email:
+    <input type="email" name="email" placeholder="" />
+  </label>
+  <br />
+
+  <label for="contact">Telefono:
+    <input type="tel" name="contact" placeholder="" />
+  </label>
   <br />
   <label>
-    Adjuntar
-    <input type="file" name="imageShow" placeholder="Adjunta tu trabajo" />
+    Imagen de perfil
+    <input type="file" name="imageProfile" placeholder="Imagen de perfil" />
   </label>
-  
-{{/if}}
+  <br />
+  {{#if isUserArtist}}
 
-<br>
-    <button  type="submit"> Guardar cambios </button>
+    <label for="genre">Género musical</label>
+    <select name="genre">
+      <option value="pop">Pop</option>
+      <option value="rock">Rock</option>
+      <option value="dj">Djs</option>
+      <option value="flamenco">Flamenco</option>
+      <option value="latina">Latina</option>
+      <option value="clasica">Clasica</option>
+      <option value="mariachis">Mariachis</option>
+    </select>
+    <br />
+    <label for="description">Descripcion</label>
+    <br />
+    <textarea name="description" rows="10" cols="40">Escribe aquí tu descripción</textarea>
+    <br />
+
+  {{/if}}
+
+  <br />
+  <button type="submit"> Guardar cambios </button>
 
 </form>
+
+
+{{!-- <h2>Informnacion adicional</h2>
+<form  action="/private-profile/edit"   method="POST"   enctype="multipart/form-data">
+<label>
+  Tus Caniciones
+  <input type="file" name="songs" placeholder="Carga tus mejores exitos" />
+</label>>
+<br />
+<label>
+  Adjuntar imagenes de eventos
+  <input type="file" name="imageShow" placeholder="Adjunta tu trabajo" />
+</label>
+<br />
+<label>
+  Adjuntar videos de eventos
+  <input type="file" name="videoShow" placeholder="Muestra tus conciertos" />
+</label>
+</form> --}}
