@@ -1,5 +1,12 @@
 <h2>Edita tu perfil</h2>
+
+
 <form action="/private-profile/edit" method="POST">
+
+<label>
+  <input type="file" name="imageProfile" value="{{userInfo.imageProfile}}" />
+</label>
+
 <label for="">Nombre de usuario:  
 <input type="text" name="username" value="{{userInfo.username}}" />
 </label>
