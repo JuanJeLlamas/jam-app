@@ -1,1 +1,17 @@
 <h2>Detalles de artista</h2>
+
+<h4>{{artistDetails.username}}</h4>
+<h5>Género: {{artistDetails.genre}}</h5>
+<h5>Email: {{artistDetails.email}} </h5>
+<h5>Teléfono: {{artistDetails.contact}} </h5>
+<h5>Descripción: {{artistDetails.description}} </h5>
+<h5>Imagen de perfil: {{artistDetails.imageProfile}} </h5>
+{{#each artistDetails.imageShow}}
+<h5>Imagenes de eventos: {{artistDetails.imageShow}} </h5>
+{{/each}}
+<h5>Videos: {{artistDetails.videoShow}} </h5>
+<h5>Caniciones: {{artistDetails.songs}} </h5>
+
+<a href="/comments"><button>RESEÑA</button></a>
+
+
