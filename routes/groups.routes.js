@@ -32,4 +32,10 @@ router.get('/:id/details', async (req, res, next) => {
   }
 })
 
+
+
+
+
+
+
 module.exports = router

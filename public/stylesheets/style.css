@@ -8,7 +8,7 @@ body {
   color: #00b7ff;
 } */
 
-h1 {
+/* h1 {
   color: 15px;
 }
 
@@ -29,9 +29,9 @@ form {
 #fondoregistro {
   background-image: url("../images/musicafondo.jpg");
   background-repeat: no-repeat;
-}
+} */
 
-.btn-success {
+/* .btn-success {
   margin-top: 28;
   margin-left: 150px;
 }
@@ -39,26 +39,31 @@ form {
 #form label {
   display: block;
   margin-left: 15px;
-}
-#form input {
+} */
+/* #form input {
   display: inline-block;
   margin-left: 10px;
   color: black;
-}
+} */
 
-form #dos {
+/* form #dos {
   display: inline-block;
   margin-left: 50px;
-}
+} */
 
-form #uno {
+/* form #uno {
   display: inline-block;
   margin-left: 35px;
-}
-select option{
+} */
+/* select option{
   color: black;
-}
-.error{
+} */
+/* .error{
   color: white;
-}
+} */
 
+.card-img-top{
+  height: 150px;
+  max-width: auto;
+ 
+}
