@@ -14,7 +14,7 @@ router.use("/profile", profileRoute)
 
 
 const commentsRoute = require("./comments.routes.js")
-router.use("/user", commentsRoute)
+router.use("/comments", commentsRoute)
 
 const privateProfileRoute = require("./private-profile.routes.js")
 router.use("/private-profile", privateProfileRoute)
