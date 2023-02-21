@@ -1,11 +1,14 @@
 <h2>Listado de grupos por género</h2>
 
 
-
     {{#each eachArtist}}
+
+    <img src="{{this.imageProfile}}" alt="Image" width="200px">
+    <h4>{{this.username}}</h4>
    
 
-    <a href="/groups/{{this._id}}/details">{{this.username}}</a>
+    <a href="/groups/{{this._id}}/details">
+    <button>Ver más</button></a>
     <br>
 
     {{/each}}

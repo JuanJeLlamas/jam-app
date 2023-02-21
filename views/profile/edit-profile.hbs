@@ -13,6 +13,11 @@
 <input type="tel" name="contact" placeholder="" />
 </label>
 
+  <label for="imageProfile">Imagen de perfil:</label>
+ 
+    <input type="file" name="imageProfile" placeholder="Foto de perfil" />
+  </label>
+
 <br>
 {{#if isUserArtist}}
   <label for=""></label>
@@ -27,8 +32,9 @@
   <br />
   <textarea name="description" rows="10" cols="40">Escribe aquí tu descripción</textarea>
   <br />
-  <label>
-    Adjuntar
+
+  <label for="imageShow">Imágenes:</label>
+ 
     <input type="file" name="imageShow" placeholder="Adjunta tu trabajo" />
   </label>
   
