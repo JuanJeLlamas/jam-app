@@ -13,7 +13,6 @@ h1 {
 }
 
 form {
-  
   color: white;
   font-weight: bold;
   border-radius: 10px;
@@ -21,18 +20,15 @@ form {
   border-color: transparent;
   box-shadow: 4px 5px 4px #310202;
   background-image: url("../images/musicafondo.jpg");
-  
 }
 
 #form h2 {
   text-align: center;
-  
 }
 
 #fondoregistro {
-
- background-image: url("../images/musicafondo.jpg");
- background-repeat: no-repeat;
+  background-image: url("../images/musicafondo.jpg");
+  background-repeat: no-repeat;
 }
 
 .btn-success {
@@ -40,21 +36,29 @@ form {
   margin-left: 150px;
 }
 
-#form label  {
-    display: block;
-    margin-left: 15px;
-  }
-  #form input {
-    display: inline-block;
-    margin-left: 10px;
-  }
+#form label {
+  display: block;
+  margin-left: 15px;
+}
+#form input {
+  display: inline-block;
+  margin-left: 10px;
+  color: black;
+}
 
-  form #dos {
-    display: inline-block;
-    margin-left: 50px
-  }
+form #dos {
+  display: inline-block;
+  margin-left: 50px;
+}
 
-  form #uno {
-    display: inline-block;
-    margin-left: 35px
-  }
+form #uno {
+  display: inline-block;
+  margin-left: 35px;
+}
+select option{
+  color: black;
+}
+.error{
+  color: white;
+}
+
