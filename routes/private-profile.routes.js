@@ -25,10 +25,19 @@ router.get('/', isLoggedIn, async (req, res, next) => {
   }
 })
 
-//GET ----Edicion de perfiles
-router.get('/edit', isLoggedIn, (req, res, next) => {
-  res.render('profile/edit-profile.hbs')
+// //GET ----Edicion de perfiles
+router.get('/edit', isLoggedIn, async (req, res, next) => {
+
+  try {
+    const response = await User.findById(req.session.activeUser._id)
+    res.render('profile/edit-profile.hbs', {
+      userInfo: response,
+    })
+  } catch (error) {
+    next(error)
+  }
 })
+
 
 //POST ----Edicion de perfiles
 router.post(

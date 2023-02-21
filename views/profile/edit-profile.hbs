@@ -1,16 +1,16 @@
 <h2>Edita tu perfil</h2>
 <form action="/private-profile/edit" method="POST">
 <label for="">Nombre de usuario:  
-<input type="text" name="username" placeholder=" " />{{isUserArtist.username}}
+<input type="text" name="username" value="{{userInfo.username}}" />
 </label>
 <br>
 <label for="">Email:  
-<input type="email" name="email" placeholder="" />
+<input type="email" name="email" value="{{userInfo.email}}" />
 </label>
 <br>
 </label>
 <label for="">Telefono:  
-<input type="tel" name="contact" placeholder="" />
+<input type="tel" name="contact" value="{{userInfo.contact}}" />
 </label>
 
 <br>
@@ -25,11 +25,11 @@
   <br>
   <label for="">Descripcion</label>
   <br />
-  <textarea name="description" rows="10" cols="40">Escribe aquí tu descripción</textarea>
+  <textarea name="description" rows="10" cols="40">{{userInfo.description}}</textarea>
   <br />
   <label>
     Adjuntar
-    <input type="file" name="imageShow" placeholder="Adjunta tu trabajo" />
+    <input type="file" name="imageShow" value="{{userInfo.imageShow}}" />
   </label>
   
 {{/if}}
