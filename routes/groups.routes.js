@@ -3,11 +3,13 @@ const User = require('../models/User.model')
 const router = express.Router()
 
 // GET "/groups/list"
-router.get('/list', async (req, res, next) => {
-  // const { role } = req.params;
+router.get('/list/:genre', async (req, res, next) => {
+  
+  const genre = req.params.genre
+  console.log(genre)
 
   try {
-    const response = await User.find({ role: { $in: ['artista'] } })
+    const response = await User.find({ genre: { $in: [genre] } })
 
     res.render('groups/list-artist.hbs', {
       eachArtist: response,
