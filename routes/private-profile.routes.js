@@ -92,10 +92,10 @@ router.post(
 
 // Intentando cargar varias imagenes
 
-//GET 
+//GET
 
-router.get( "/uploadimg",  isLoggedIn, async (req, res, next) => {
-  console.log(req.session.activeUser._id) 
+router.get('/uploadimg', isLoggedIn, async (req, res, next) => {
+  console.log(req.session.activeUser._id)
 
   try {
     const response = await User.findById(req.session.activeUser._id)
@@ -107,27 +107,23 @@ router.get( "/uploadimg",  isLoggedIn, async (req, res, next) => {
   }
 })
 
-
-
 //POST para cargar imagenes
 router.post(
-  "/uploadimg",
+  '/uploadimg',
   uploader.single('imageShow'),
   isLoggedIn,
   async (req, res, next) => {
     console.log(req.session.activeUser._id)
 
-    let newImageShow 
+    let imageShow
     if (req.file !== undefined) {
-      newImageShow = req.file.path
+      imageShow = req.file.path
     }
 
     try {
       const userEdit = await User.findByIdAndUpdate(
         req.session.activeUser._id,
-        {
-          imageShow: imageShow,
-        },
+        { $push: { imageShow: imageShow } },
       )
 
       res.redirect('/private-profile')

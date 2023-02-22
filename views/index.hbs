@@ -3,13 +3,21 @@
     <h1 class="display-5 fw-bold">Bienvenido a JAM</h1>
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Tu biblioteca de musicos independientes</p>
+        {{#if activeUser}}
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="/private-profile">
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Mi perfil</button>
+            </a>
+            {{else}}
+
             <a href="/profile/signup">
                 <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Registrate</button>
             </a>
+
             <a href="/profile/login">
                 <button type="button" class="btn btn-outline-secondary btn-lg px-4">Accede a tu cuenta</button>
             </a>
+            {{/if}}
         </div>
     </div>
 </div>
