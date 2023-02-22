@@ -13,44 +13,40 @@
 
 <body>
 
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a href="/">
-        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-          role="tab" aria-controls="nav-home" aria-selected="true">Inicio</button>
-      </a>
+  <nav class="navbar fixed-top navbar-dark bg-dark" >
 
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+      </li>
       {{#if activeUser}}
-      <a href="/private-profile">
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-          role="tab" aria-controls="nav-profile" aria-selected="true">Mi perfil</button>
-      </a>
-      <a href="/profile/logout">
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
-          role="tab" aria-controls="nav-contact" aria-selected="false">Cerrar sesión</button>
-      </a>
-
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/private-profile">Mi perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/profile/logout">Cerrar sesión</a>
+      </li>
       {{else}}
-
-      <a href="/profile/signup">
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
-          role="tab" aria-controls="nav-contact" aria-selected="false">Registrate</button>
-      </a>
-      <a href="/profile/login">
-        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
-          role="tab" aria-controls="nav-contact" aria-selected="false">Accede a tu cuenta</button>
-      </a> 
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/profile/signup">Registrate</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/profile/login">Accede a tu cuenta</a>
+      </li>
       {{/if}}
+    </ul>
 
-    </div>
-
-
-
-
-{{{body}}}
+  </nav>
 
 
-  
+
+
+
+
+  {{{body}}}
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
