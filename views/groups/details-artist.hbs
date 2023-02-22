@@ -1,4 +1,4 @@
-
+<div class="divPerfil">
 <h2>Detalles de artista</h2>
 <img src="{{artistDetails.imageProfile}}" alt="Image" width="200px">
 <h4>{{artistDetails.username}}</h4>
@@ -12,8 +12,35 @@
 {{/each}}
 <h5>Videos: {{artistDetails.videoShow}} </h5>
 <h5>Caniciones: {{artistDetails.songs}} </h5>
-<h5>Comentarios: {{comment.comment}}</h5>
 
-<a href="/comments"><button>RESEÑA</button></a>
+<h5>Comentarios:</h5>
+{{#each commentDetails}}
+<h6>{{this.creator.username}}</h6>
+<h6>{{this.comment}}</h6>
+
+
+<form action="/comments/{{this._id}}/delete" method="post">
+<button type="submit">Eliminar</button>
+</form>
+
+<a href="/comments/{{this._id}}/edit">
+<button type="submit">Editar</button>
+</a>
+<br>
+
+
+
+{{/each}}
+
+{{#if activeUser}}
+
+<a href="/comments/{{artistDetails.id}}"><button>Nueva reseña</button></a>
+{{/if}}
+
+<br>
+
+</div>
+
+
 
 

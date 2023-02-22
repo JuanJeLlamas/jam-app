@@ -1,0 +1,18 @@
+<h2>Editar comentario</h2>
+
+<h1>{{commentToUpdate.artistUser}}</h1>
+
+<form action="/comments/{{commentToUpdate.artistUser}}"  method="POST">
+
+
+    <br />
+
+
+<label for="comment">Comentario:</label>
+        <input type="text" name="comment" value="{{commentToUpdate.comment}}">
+        <br>
+
+        <button type="submit">Enviar</button>
+
+
+</form>

@@ -54,12 +54,12 @@ const userSchema = new Schema(
       type: String,
     },
 
-    // favourite: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "User",
-    //   }
-    // ]     ESTO PARA EL BONUS
+    favourite: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      }
+    ]     
   },
   {
     timestamps: true,

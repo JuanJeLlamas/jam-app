@@ -22,7 +22,7 @@ router.use("/private-profile", privateProfileRoute)
 const groupsRoute = require("./groups.routes.js")
 router.use("/groups", groupsRoute)
 
-
-
+const favRoute = require("./fav.routes.js")
+router.use(`/favorites`, favRoute)
 
 module.exports = router;
