@@ -51,7 +51,7 @@ router.post("/:id/delete", async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    await Comments.findByIdAndDelete(id);
+    await Comments.findByIdAndDelete(id).populate("artistUser");
     res.redirect("/");
   } catch (error) {
     next(error);
@@ -63,8 +63,10 @@ router.get("/:id/edit", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const commentToUpdate = await Comments.findByIdAndUpdate();
-    res.render("user/edit-comment.hbs");
+    const commentToUpdate = await Comments.findById(id);
+    res.render("user/edit-comment.hbs", {
+      commentToUpdate: commentToUpdate
+    });
 
   } catch (error) {
     next(error);
@@ -74,9 +76,18 @@ router.get("/:id/edit", isLoggedIn, async (req, res, next) => {
 
 
 // post "/comments/:id/edit" => guarda la información del formulario y la guarda en la DB
-// router.post("/:id/edit", isLoggedIn, asyn (req, res, next) => {
-  
-// })
+router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
+  const { id } = req.params;
 
+  try {
+    const commentToUpdate = await Comments.findByIdAndUpdate(id, {
+      comment: req.body.comment,
+    });
+    res.redirect("/");
+
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

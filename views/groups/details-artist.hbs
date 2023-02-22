@@ -1,4 +1,4 @@
-
+<div class="divPerfil">
 <h2>Detalles de artista</h2>
 <img src="{{artistDetails.imageProfile}}" alt="Image" width="200px">
 <h4>{{artistDetails.username}}</h4>
@@ -20,13 +20,14 @@
 
 
 <form action="/comments/{{this._id}}/delete" method="post">
-<button>Eliminar</button>
+<button type="submit">Eliminar</button>
 </form>
 
-<form action="/comments/{{this._id}}/edit" method="post">
-<button>Editar</button>
-</form>
+<a href="/comments/{{this._id}}/edit">
+<button type="submit">Editar</button>
+</a>
 <br>
+
 
 
 {{/each}}
@@ -37,6 +38,8 @@
 {{/if}}
 
 <br>
+
+</div>
 
 
 
