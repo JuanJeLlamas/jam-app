@@ -1,27 +1,43 @@
 <h2>¡Bienvenido a tu perfil {{details.username}}!</h2>
 
-<img src="{{details.imageProfile}}" alt="Image">
+<img src="{{details.imageProfile}}" alt="Image" />
 
-<<<<<<< HEAD
 <h5>Nombre de usuario: {{details.username}} </h5>
-=======
-
-<h5>Nombre: {{details.username}} </h5>
->>>>>>> 06ff0b277d3a48fde47052c90796f95a5f4111ea
 <h5>Email: {{details.email}} </h5>
 <h5>Teléfono: {{details.contact}} </h5>
 <h5>Descripción: {{details.description}} </h5>
-<h5>Imagenes de eventos: {{details.imageShow}} </h5>
+<h5>Imagenes de eventos:</h5>
+  {{#each details.imageShow}}
+    <img src="{{this}}" alt="" />
+  {{/each}}
+
 <h5>Videos: {{details.videoShow}} </h5>
 <h5>Canciones: {{details.songs}} </h5>
 <h5>Género: {{details.genre}} </h5>
 
+<form
+  action="/private-profile/uploadimg"
+  method="POST"
+  enctype="multipart/form-data"
+>
 
-  <br />
-  <a href="/private-profile/edit">
+  <label>
+    Adjuntar
+    <input type="file" name="imageShow" value="" />
+
+  </label>
+
+  <button type="submit"> Guardar cambios </button>
+
+</form>
+
+
+
+<br />
+<a href="/private-profile/edit">
   <button type="submit">Editar información</button>
-  </a>
-<br>
-   <form action="/private-profile/delete" method="post">
+</a>
+<br />
+<form action="/private-profile/delete" method="post">
   <button>Eliminar perfil</button>
-  </form>
+</form>
