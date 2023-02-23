@@ -36,4 +36,20 @@ router.post("/:artistId", async (req, res, next) => {
   }
 });
 
+router.post("/:artistId/del", async (req, res, next) => {
+ 
+  const { artistId } = req.params;
+  const userParticular = req.session.activeUser._id;
+
+  try {
+    await User.findByIdAndUpdate(userParticular
+  , {
+       $pull: { favourite: artistId }, 
+    });
+    res.redirect("/private-profile/fav");
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
