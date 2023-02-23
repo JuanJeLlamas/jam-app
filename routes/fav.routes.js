@@ -1,43 +1,39 @@
-const express = require('express')
-const User = require('../models/User.model')
-const router = express.Router()
+const express = require("express");
+const User = require("../models/User.model");
+const router = express.Router();
 
-router.get("/", async (req, res, next) => {
- const userParticular = req.session.activeUser
- try{
+// router.get("/:id", async (req, res, next) => {
+//   //  const userParticular = req.session.activeUser
+//   const userParticular = req.session._id;
+//   console.log("userParticular" , userParticular)
 
-    const response = await User.findById(userParticular._id)
-    .populate( {path: "favourite" } );
-     res.render("user/fav-list.hbs", { 
-        response : response
-        
-     })
-    
- } catch(err){
-    next(err)
- }
-   //Necesitamos requerir la id del artista para añadirlo al array del usuario. Se hara redirect al mismo lugar despues de 
+//   try {
+//     const response = await User.findById(userParticular._id)
+//     res.render("user/fav-list.hbs", {
+//       response: response,
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-
-})
-
-
-router.post("/:id", async (req, res, next) => {
-//creo que deberia ser ruta dinamica por id del usuario activo
-   const { id } = req.params
-   const userParticular = req.session.activeUser
-   try{
-    await User.findByIdAndUpdate(userParticular._id, {
-        $addToSet: { favourite: id }
+//Necesitamos requerir la id del artista para añadirlo al array del usuario.
+//Se hara redirect al mismo lugar despues de pulsar
+router.post("/:artistId", async (req, res, next) => {
+ 
+  const { artistId } = req.params;
+  const userParticular = req.session.activeUser._id;
+  console.log("Hola idparticular", userParticular);
+ console.log("hola id", artistId);
+  try {
+    await User.findByIdAndUpdate(userParticular
+  , {
+       $addToSet: { favourite: artistId }, 
     });
-    res.redirect("/")
-   } catch (err){
-    next(err)
-   }
-
-})
+    res.redirect("/");
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
-
-
-      

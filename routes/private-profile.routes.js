@@ -147,4 +147,45 @@ router.post('/delete', isLoggedIn, (req, res, next) => {
     })
 })
 
+
+// router.get("/fav",  async(req, res, next) => {
+//      const userParticularfavs = req.session.activeUser.favourite
+//     console.log("userParticular" , userParticularfavs)
+  
+//     try {
+//       const response = await User.findById(userParticular._id)
+     
+//       res.render("user/fav-list.hbs", {
+//         response: response,
+//       });
+//     } catch (err) {
+//       next(err);
+//     }
+//   });
+
+
+  router.get('/fav', isLoggedIn, async (req, res, next) => {
+    try {
+      const response = await User.findById(req.session.activeUser._id).populate({
+        path: "favourite",
+      });
+      console.log(response)
+      res.render('user/fav-list.hbs', {
+        favorito: response.favourite
+        
+      })
+    } catch (error) {
+      next(error)
+    }
+  })
+  
 module.exports = router
+
+// try {
+//   const response = await User.findById(userParticular._id).populate({
+//     path: "favourite",
+//   });
+//   res.render("user/fav-list.hbs", {
+//     response: response,
+//   });
+// }
