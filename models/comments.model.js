@@ -13,7 +13,8 @@ const commentSchema = new Schema(
         artistUser: {
             type: Schema.Types.ObjectId,
             ref: "User"
-        }
+        },
+       
     },
     {
         timestamps: true
