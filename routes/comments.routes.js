@@ -14,7 +14,7 @@ const {
 // GET "/comments/:id" => renderiza el formulario para añadir una reseña al grupo seleccionado según su id
 router.get("/:id", isLoggedIn, async (req, res, next) => {
   const id = req.params.id;
-  console.log(id);
+ // console.log("Este es el id del artista al que hacemos el comentario", id);
 
   try {
     const response = await User.findById(id);
@@ -27,11 +27,12 @@ router.get("/:id", isLoggedIn, async (req, res, next) => {
   }
 });
 
-// POST "/comments/:id" => guarda la información del formulario de comentarios y
+// POST "/comments/:id" => guarda la información del formulario de comentarios y la sube a la DB
 router.post("/:id", isLoggedIn, async (req, res, next) => {
-  const id = req.params.id;
+  const id = req.params.id; // id del artista al que va dirigido el comentario
   const comment = req.body.comment;
-  const creadorId = req.session.activeUser._id;
+  const creadorId = req.session.activeUser._id; // id del creador del comentario
+ // console.log(id, comment, creadorId)
 
   try {
     const response = await Comments.create({
@@ -47,23 +48,42 @@ router.post("/:id", isLoggedIn, async (req, res, next) => {
 });
 
 // POST "/comments/:id/delete"
-router.post("/:id/delete", async (req, res, next) => {
-  const { id } = req.params;
+router.post("/:id/delete", isLoggedIn, async (req, res, next) => {
+  const { id } = req.params; // id del comentario eliminado
+  console.log("Eliminar comentario", id)
 
   try {
-    await Comments.findByIdAndDelete(id).populate("artistUser");
-    res.redirect("/");
-  } catch (error) {
+  const commentToDelete = await Comments.findByIdAndDelete(id).populate("artistUser");
+ // console.log("COMENTARIO A ELIMINAR", commentToDelete.artistUser._id)
+  const artistId = commentToDelete.artistUser._id
+//  console.log("ESTE ES EL ID DEL ARTISTA", artistId)
+
+    res.redirect(`/groups/${artistId}/details`);
+    
+  } 
+
+  catch (error) {
     next(error);
   }
 });
 
 // GET "/comments/:id/edit" => renderiza el formulario de edición del comentario
 router.get("/:id/edit", isLoggedIn, async (req, res, next) => {
-  const { id } = req.params;
+  const { id } = req.params; // id del comentario
+  const creadorUsername = req.session.activeUser.username; // id del usuario que crea el comentario
+  
+ // console.log("ID DEL CREADOR", creadorUsername)
 
   try {
-    const commentToUpdate = await Comments.findById(id);
+    const commentToUpdate = await Comments.findById(id).populate("creator");
+    //console.log("USUARIO QUE COMENTA", commentToUpdate.creator.username)
+
+    if(creadorUsername !== commentToUpdate.creator.username) {
+      res.render("sin-autorizacion.hbs", {
+        errorMessage: 'No puedes editar el comentario de otra persona'
+      })
+      return;
+    }
     res.render("user/edit-comment.hbs", {
       commentToUpdate: commentToUpdate
     });
@@ -75,15 +95,21 @@ router.get("/:id/edit", isLoggedIn, async (req, res, next) => {
 
 
 
-// post "/comments/:id/edit" => guarda la información del formulario y la guarda en la DB
+// POST "/comments/:id/edit" => guarda la información del formulario y la guarda en la DB
 router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
 
   try {
+    const artistComment = await Comments.findById(id).populate("artistUser")
+    const artistId = artistComment.artistUser._id
+
+    console.log("Este es el id del comentario", artistId)
+
     const commentToUpdate = await Comments.findByIdAndUpdate(id, {
       comment: req.body.comment,
     });
-    res.redirect("/");
+    
+    res.redirect(`/groups/${artistId}/details`);
 
   } catch (error) {
     next(error);

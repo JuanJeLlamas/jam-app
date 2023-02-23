@@ -1,37 +1,39 @@
-const express = require('express')
-const User = require('../models/User.model')
-const router = express.Router()
+const express = require("express");
+const User = require("../models/User.model");
+const router = express.Router();
 
-router.post("/:id", async (req, res, next) => {
-const artistId = req.params
-console.log("HOLaaAQ" , artistId)   //Necesitamos requerir la id del artista para añadirlo al array del usuario. Se hara redirect al mismo lugar despues de 
-    try {
-        
-        let response = await User.findById(artistId)
-        res.redirect("/groups/list/")
+// router.get("/:id", async (req, res, next) => {
+//   //  const userParticular = req.session.activeUser
+//   const userParticular = req.session._id;
+//   console.log("userParticular" , userParticular)
 
-    } catch (err) {
-        next(err)
-    }
+//   try {
+//     const response = await User.findById(userParticular._id)
+//     res.render("user/fav-list.hbs", {
+//       response: response,
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-
-})
-
-// router.post(`/groups/:id/favorites`, async (req, res, next) => {
-// //creo que deberia ser ruta dinamica por id del usuario activo
-//    const actualUser = req.session.activeUser 
-//    const userId = req.params
-//    try{
-//     await User.findByIdAndUpdate(activeUser._id, {
-//         $addToSet: {favourite: userId}
-//     })
-//    } catch (err){
-//     next(err)
-//    }
-
-// })
+//Necesitamos requerir la id del artista para añadirlo al array del usuario.
+//Se hara redirect al mismo lugar despues de pulsar
+router.post("/:artistId", async (req, res, next) => {
+ 
+  const { artistId } = req.params;
+  const userParticular = req.session.activeUser._id;
+  console.log("Hola idparticular", userParticular);
+ console.log("hola id", artistId);
+  try {
+    await User.findByIdAndUpdate(userParticular
+  , {
+       $addToSet: { favourite: artistId }, 
+    });
+    res.redirect("/");
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
-
-
-      

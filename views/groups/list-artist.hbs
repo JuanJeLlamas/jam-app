@@ -1,22 +1,22 @@
 <h2>Listado de grupos por género</h2>
 
 
-    {{#each eachArtist}}
-    <h4>{{this.username}}</h4>
-    <br>
-    <img src="{{this.imageProfile}}" alt="Image" width="200px">
-    
-   
+{{#each eachArtist}}
+<h4>{{this.username}}</h4>
+<br>
+<img src="{{this.imageProfile}}" alt="Image" width="200px">
 
-    <a href="/groups/{{this._id}}/details">
+
+
+<a href="/groups/{{this._id}}/details">
     <button>Ver más</button></a>
-    <br>
+<br>
+
+
 <form action="/favorites/{{this._id}}" method="post">
-   
+
     <button>Añadir a favoritos</button>
-    </form>
+</form>
 
 
-    {{/each}}
-
-    
+{{/each}}
