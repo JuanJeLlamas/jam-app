@@ -18,7 +18,7 @@
 <h6>{{this.creator.username}}</h6>
 <h6>{{this.comment}}</h6>
 
-
+{{#if mismaId}}
 <form action="/comments/{{this._id}}/delete" method="post">
 <button type="submit">Eliminar</button>
 </form>
@@ -27,10 +27,12 @@
 <button type="submit">Editar</button>
 </a>
 <br>
-
-
-
+{{/if}}
 {{/each}}
+
+
+
+
 
 {{#if activeUser}}
 
