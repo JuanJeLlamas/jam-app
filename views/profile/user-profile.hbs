@@ -6,32 +6,54 @@
 <h5>Email: {{details.email}} </h5>
 <h5>Teléfono: {{details.contact}} </h5>
 <h5>Descripción: {{details.description}} </h5>
+
 <h5>Imagenes de eventos:</h5>
-  {{#each details.imageShow}}
-    <img src="{{this}}" alt="" width="150px"/>
-  {{/each}}
-
-<h5>Videos: {{details.videoShow}} </h5>
-<h5>Canciones: {{details.songs}} </h5>
-<h5>Género: {{details.genre}} </h5>
-
-<form
-  action="/private-profile/uploadimg"
-  method="POST"
-  enctype="multipart/form-data"
->
-
-  <label>
-    Adjuntar
-    <input type="file" name="imageShow" value="" />
-
-  </label>
-
-  <button type="submit"> Guardar cambios </button>
-
+<form action="/private-profile/uploadimg" method="POST" enctype="multipart/form-data">
+  <label> Adjuntar</label>
+  <br>
+  <input type="file" name="imageShow" value="" />
+  <br>
+  <button type="submit"> Adjuntar Imagenes </button>
 </form>
 
+{{#each details.imageShow}}
 
+<img src="{{this}}" alt="" width="150px" />
+
+<form action="/private-profile/uploadimg/delete" method="post" enctype="multipart/form-data">
+  <button type="submit">Borrar Imagen</button>
+</form>
+
+{{/each}}
+
+
+
+
+
+
+<h5>Canciones:</h5>
+{{!-- {{#each details.imageShow}}
+<audio src="{{this}}" alt="" controls></audio>
+{{/each}}
+<form action="/private-profile/:imageShow" method="POST" enctype="multipart/form-data">
+  <label> Adjuntar</label>
+  <br>
+  <input type="file" name="uploadsong" value="" />
+  <br>
+  <button type="submit"> Adjuntar Canciones </button>
+</form> --}}
+
+<h5>Videos: {{details.videoShow}} </h5>
+<h5>Género: {{details.genre}} </h5>
+
+
+
+
+
+{{!-- <form action="/uploadimg/:imageShow" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="submit" value="Delete Image" />
+</form> --}}
 
 <br />
 <a href="/private-profile/edit">

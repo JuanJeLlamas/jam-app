@@ -90,7 +90,7 @@ router.post(
   },
 )
 
-// Intentando cargar varias imagenes
+// Cargar varias imagenes
 
 //GET
 
@@ -133,7 +133,79 @@ router.post(
   },
 )
 
-//----------------------------------------------------
+//!DELETE para borrar imagenes
+//! ////////////////////////////////////////////////////////////////////////////////
+
+router.post('/uploadimg/delete', isLoggedIn, async (req, res, next) => {
+  console.log('Patata', req.body)
+
+  const deleteImg = req.session.activeUser.imageShow
+  console.log('Patata2', deleteImg)
+
+  const { imageShow } = req.params
+
+  try {
+    const userEdit = await User.findByIdAndUpdate(
+      req.session.activeUser._id,
+      // req.session.activeUser._id,
+      // console.log('Patata3', userEdit.imageShow),
+
+      { $pull: { imageShow: userEdit.imageShow } },
+)
+      res.redirect('/private-profile')
+    
+  } catch (error) {
+    next(error)
+  }
+})
+
+//!------------------------------------------------------------------------------
+
+// !Cargar varias canciones
+//! ////////////////////////////////////////////////////////////////////////////////
+//GET
+
+router.get('/uploadsong', isLoggedIn, async (req, res, next) => {
+  console.log(req.session.activeUser._id)
+
+  try {
+    const response = await User.findById(req.session.activeUser._id)
+    res.render('profile/user-profile.hbs', {
+      details: response,
+    })
+  } catch (error) {
+    next(error)
+  }
+})
+
+//POST para cargar canciones
+router.post(
+  '/uploadsong',
+  uploader.single('songs'),
+  isLoggedIn,
+  async (req, res, next) => {
+    console.log(req.session.activeUser._id)
+
+    let songs
+    if (req.file !== undefined) {
+      songs = req.file.path
+    }
+
+    try {
+      const userEdit = await User.findByIdAndUpdate(
+        req.session.activeUser._id,
+        { $push: { songs: songs } },
+      )
+
+      res.redirect('/private-profile')
+    } catch (error) {
+      next(error)
+    }
+  },
+)
+
+//! ////////////////////////////////////////////////////////////////////////////////
+//!----------------------------------------------------
 
 router.post('/delete', isLoggedIn, (req, res, next) => {
   User.findByIdAndDelete(req.session.activeUser._id)
