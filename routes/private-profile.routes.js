@@ -137,27 +137,23 @@ router.post(
 //! ////////////////////////////////////////////////////////////////////////////////
 
 router.post('/uploadimg/delete', isLoggedIn, async (req, res, next) => {
-  console.log('Patata', req.body)
-
-  const deleteImg = req.session.activeUser.imageShow
-  console.log('Patata2', deleteImg)
-
-  const { imageShow } = req.params
-
+  const imagesToDelete = req.body.imagesToDelete;
+  
   try {
-    const userEdit = await User.findByIdAndUpdate(
-      req.session.activeUser._id,
-      // req.session.activeUser._id,
-      // console.log('Patata3', userEdit.imageShow),
-
-      { $pull: { imageShow: userEdit.imageShow } },
-)
-      res.redirect('/private-profile')
+    const user = await User.findById(req.session.activeUser._id);
     
+
+    await User.findByIdAndUpdate(
+      req.session.activeUser._id,
+      { $pull: { imageShow: { $in: imagesToDelete } } }
+    );
+
+    res.redirect('/private-profile');
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
+
 
 //!------------------------------------------------------------------------------
 
