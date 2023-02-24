@@ -1,22 +1,35 @@
 <h2>Listado de grupos por género</h2>
 
+<div class="row container">
 
-{{#each eachArtist}}
-<h4>{{this.username}}</h4>
-<br>
-<img src="{{this.imageProfile}}" alt="Image" width="200px">
+  {{#each eachArtist}}
+    <div class="col-sm-3 mb-3 mb-sm-3">
+      <div class="card text-bg-light mb-3" style="max-width: 18rem;">
 
+        <br />
+        <img
+          src="{{this.imageProfile}}"
+          class="card-img-top"
+          alt="Image"
+        />
 
+        <div class="card-body">
+          <h5 class="card-title">{{this.username}}</h5>
 
-<a href="/groups/{{this._id}}/details">
-    <button>Ver más</button></a>
-<br>
+          
+          <a href="/groups/{{this._id}}/details">
+            <button class="btn btn-outline-secondary" margin="5px">Ver más</button></a>
+          <br />
 
+          <form action="/favorites/{{this._id}}" method="post">
 
-<form action="/favorites/{{this._id}}" method="post">
+            <button class="btn btn-outline-secondary" margin="5px">Añadir a favoritos</button>
+          </form>
 
-    <button>Añadir a favoritos</button>
-</form>
+        </div>
+      </div>
+    </div>
 
+  {{/each}}
 
-{{/each}}
+</div>
