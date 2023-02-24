@@ -46,7 +46,7 @@
 
 
 <section class=" secciones vh-100">
-  <h2>Artista</h2>
+  
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-6 mb-4 mb-lg-0">
@@ -55,7 +55,7 @@
             <div class="col-md-4 gradient-custom text-center text-white"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <img src="{{artistDetails.imageProfile}}" alt="Avatar" class="img-fluid my-5" style="width: 180px;" />
-              <h5>{{artistDetails.username}}</h5>
+              <h3>{{artistDetails.username}}</h3>
 
               <i class="far fa-edit mb-5"></i>
             </div>
@@ -72,9 +72,8 @@
                     <h6>Telefono</h6>
                     <p class="text-muted">{{artistDetails.contact}}</p>
                   </div>
-                </div>
-                <h6>Genero:</h6>
-                <p>{{artistDetails.genre}}</p>
+                  </div>
+                <h6>Genero:<p>{{artistDetails.genre}}</p></h6>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-12 mb-3">
@@ -86,6 +85,18 @@
                 </div><h6>Imagenes de eventos</h6>
         <img src="{{artistDetails.imageShow}}" width="350px" alt="">
               </div>
+               <div class="col-6 mb-3">
+  <h6>Imágenes:</h6>
+  <div class="d-flex flex-wrap">
+    {{#each artistDetails.imageShow}}
+    <br>
+    <img src="{{this}}" width="180px" alt="">
+    <br>
+    {{/each}}
+  </div>
+</div>
+
+                
             </div>
             
           </div>
@@ -124,5 +135,5 @@
     </div>
   
   </div>
-  
+ 
 </section>
