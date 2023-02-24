@@ -1,10 +1,10 @@
 <h1>12</h1>
 
-  <h3><u> FAVORITOS </u>:</h3>
+ <div class="fav"> <h3> FAVORITOS 🎵</h3>  </div>
 {{#each favorito}}
     
       <hr>
-     <div class=" fav">
+     <div class="alert alert-dark">
 
       <h5 >Artista: <b>{{this.username}}</b> del genero <B>{{this.genre}}</B></h5>
       
@@ -12,11 +12,10 @@
      <br>
      
   
-      <h6>Sobre nosotros: <i>{{this.description}}</i></h6>
+      <h6> <b> Sobre nosotros:</b> <i>{{this.description}}</i></h6>
         <h6 ><b>Contacto:</b> {{this.email}} --- Teléfono: <b>{{this.contact}}</b></h6>
       
       </div>
-    
 
      <br>
       <form action="/favorites/{{this._id}}/del" method="POST">
