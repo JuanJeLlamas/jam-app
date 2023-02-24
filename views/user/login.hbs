@@ -1,23 +1,33 @@
-<div id="form">
-  <h2>Acceso de usuarios</h2>
-  <form action="/profile/login" method="POST">
+<section class="col-8 container shadow border-0 justify-content-center bg-light p-3 border secciones">
+  <h2>Accede a tu cuenta</h2>
 
-    <label>
-      Nombre de usuario
-      <input type="text" name="username" placeholder="Tu nombre de usuario" />
-    </label>
-    <br />
+  <div id="form">
 
-    <label>
-      Contraseña
-      <input type="password" name="password" placeholder="Tu contraseña" />
-    </label>
-    <br />
-    
-    <button type="submit">Iniciar sesión</button>
+    <form action="/profile/login" method="POST" class="col-8 container justify-content-center bg-light p-3 border" class="row g-3 needs-validation"
+      novalidate>
+      <div class="col-md-8">
+        <label for="validationCustom01" class="form-label">
+          Nombre de usuario</label>
+        <input type="text" class="form-control" name="username" placeholder="Tu nombre de usuario" required />
+        <div class="valid-feedback">
+        </div>
+      </div>
+      <br />
+      <div class="col-md-8">
+        <label for="validationCustom03" class="form-label">Contraseña</label>
+        <input type="password" name="password" placeholder="Tu contraseña" class="form-control" id="validationCustom03"
+          required>
+        <div class="invalid-feedback" />
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-</div>
+      </div>
+      <br />
+      <div class="col-12">
+        <button class="btn btn-secondary" type="submit">Iniciar sesión</button>
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+</section>

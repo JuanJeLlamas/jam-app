@@ -102,3 +102,7 @@ form {
 .textshadow{
   text-shadow: 0px 5px 5px rgba(13, 3, 13, 0.233);
 }
+
+.secciones{
+  margin-top: 6rem;
+}
