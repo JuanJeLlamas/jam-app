@@ -1,48 +1,128 @@
-<div class="divPerfil">
-<h2>Detalles de artista</h2>
-<img src="{{artistDetails.imageProfile}}" alt="Image" width="200px">
-<h4>{{artistDetails.username}}</h4>
-<h5>Género: {{artistDetails.genre}}</h5>
-<h5>Email: {{artistDetails.email}} </h5>
-<h5>Teléfono: {{artistDetails.contact}} </h5>
-<h5>Descripción: {{artistDetails.description}} </h5>
-<h5>Imagen de perfil: {{artistDetails.imageProfile}} </h5>
-{{#each artistDetails.imageShow}}
-<h5>Imagenes de eventos: {{artistDetails.imageShow}} </h5>
-{{/each}}
-<h5>Videos: {{artistDetails.videoShow}} </h5>
-<h5>Caniciones: {{artistDetails.songs}} </h5>
+{{!-- <div class="divPerfil">
+  <h2>Detalles de artista</h2>
+  <img src="{{artistDetails.imageProfile}}" alt="Image" width="200px">
+  <h4>{{artistDetails.username}}</h4>
+  <h5>Género: {{artistDetails.genre}}</h5>
+  <h5>Email: {{artistDetails.email}} </h5>
+  <h5>Teléfono: {{artistDetails.contact}} </h5>
+  <h5>Descripción: {{artistDetails.description}} </h5>
+  <h5>Imagen de perfil: {{artistDetails.imageProfile}} </h5>
+  {{#each artistDetails.imageShow}}
+  <h5>Imagenes de eventos: {{artistDetails.imageShow}} </h5>
+  {{/each}}
+  <h5>Videos: {{artistDetails.videoShow}} </h5>
+  <h5>Caniciones: {{artistDetails.songs}} </h5>
 
-<h5>Comentarios:</h5>
-{{#each cloneCommentsDetails}}
-<h5>{{this.creator.username}}</h5>
-<h6>{{this.comment}}</h6>
+  <h5>Comentarios:</h5>
+  {{#each cloneCommentsDetails}}
+  <h5>{{this.creator.username}}</h5>
+  <h6>{{this.comment}}</h6>
 
-{{#if mismaId}}
-<form action="/comments/{{this._id}}/delete" method="post">
-<button type="submit">Eliminar</button>
-</form>
+  {{#if mismaId}}
+  <form action="/comments/{{this._id}}/delete" method="post">
+    <button type="submit">Eliminar</button>
+  </form>
 
-<a href="/comments/{{this._id}}/edit">
-<button type="submit">Editar</button>
-</a>
-<br>
-{{/if}}
-{{/each}}
-
-
-
-
-
-{{#if activeUser}}
-
-<a href="/comments/{{artistDetails.id}}"><button>Nueva reseña</button></a>
-{{/if}}
-
-<br>
-
-</div>
+  <a href="/comments/{{this._id}}/edit">
+    <button type="submit">Editar</button>
+  </a>
+  <br>
+  {{/if}}
+  {{/each}} --}}
 
 
 
 
+  {{!--
+  {{#if activeUser}}
+
+  <a href="/comments/{{artistDetails.id}}"><button>Nueva reseña</button></a>
+  {{/if}}
+
+  <br>
+
+</div> --}}
+
+
+
+<section class=" secciones vh-100">
+  <h2>Artista</h2>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="{{artistDetails.imageProfile}}" alt="Avatar" class="img-fluid my-5" style="width: 180px;" />
+              <h5>{{artistDetails.username}}</h5>
+
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>{{artistDetails.username}}</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email:</h6>
+                    <p class="text-muted"> {{artistDetails.email}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Telefono</h6>
+                    <p class="text-muted">{{artistDetails.contact}}</p>
+                  </div>
+                </div>
+                <h6>Genero:</h6>
+                <p>{{artistDetails.genre}}</p>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Descripción:</h6>
+                    <p class="text-muted">{{artistDetails.description}}</p>
+                  </div>
+                  <br>
+
+                </div>
+
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>  <div class="col-8 mb-13 container py-5 h-100">
+                    <h6>Comentarios</h6>
+                    {{#each cloneCommentsDetails}}
+                    <h5>{{this.creator.username}}</h5>
+
+
+                    <p class="text-muted" >{{this.comment}}</p>
+                    {{#if mismaId}}
+                    
+                    <form action="/comments/{{this._id}}/delete" method="post">
+                      <button class="btn btn-secondary" type="submit">Eliminar</button>
+                    </form>
+
+                    <a type="submit" class="btn btn-secondary" href="/comments/{{this._id}}/edit">
+                      Editar
+                    </a>
+                    
+                    {{/if}}
+                    {{/each}}
+                    {{#if activeUser}}
+
+                    <a class="btn btn-secondary" href="/comments/{{artistDetails.id}}">Nueva reseña</a>
+                    {{/if}}
+
+
+
+
+
+
+                  </div>
+    </div>
+  
+  </div>
+  
+</section>
