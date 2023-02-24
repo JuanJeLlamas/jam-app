@@ -1,14 +1,23 @@
+
+
+<section class="col-8 container shadow border-0 justify-content-center bg-light p-3 border secciones">
+
 <h2>Comentar sobre {{response.username}} </h2>
+
+<div id="form">
 
 <form action="/comments/{{response.id}}"  method="POST">
 
 
-<label for="comment">Comentario:</label>
-  <input type="text" name="comment" />
+<label for="comment" class="form-label">Comentario:</label>
+  <input type="text" name="comment" class="form-control" />
   <br>
 
-  <button type="submit">Enviar</button>
+  <button type="submit" class="btn btn-secondary">Enviar</button>
 
 
 
 </form>
+
+
+</div>
