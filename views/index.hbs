@@ -1,82 +1,123 @@
-<div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="./images/rock.svg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold">Bienvenido a JAM</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Tu biblioteca de musicos independientes</p>
-        {{#if activeUser}}
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="/private-profile">
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Mi perfil</button>
-            </a>
-            {{else}}
+<div class="hero"> 
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="./images/rock.svg" alt="" width="72" height="57">
+        <h1 class="display-5 fw-bold text-light textshadow">Bienvenido a JAM</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4 text-light textshadow">Tu biblioteca de musicos independientes</p>
+            {{#if activeUser}}
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="/private-profile">
+                    <button type="button" class="btn btn-dark btn-lg px-4 gap-3">Mi perfil</button>
+                </a>
+                {{else}}
 
-            <a href="/profile/signup">
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Registrate</button>
-            </a>
+                <a href="/profile/signup">
+                    <button type="button" class="btn btn-dark btn-lg px-4 gap-3">Registrate</button>
+                </a>
 
-            <a href="/profile/login">
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Accede a tu cuenta</button>
-            </a>
-            {{/if}}
+                <a href="/profile/login">
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Accede a tu cuenta</button>
+                </a>
+                {{/if}}
+            </div>
         </div>
     </div>
 </div>
+<div class="justify-content-center container">
+    <div class="row container ">
 
-<div class="row">
+        <div class="col-sm-3 mb-3 mb-sm-3 ">
+            <div class="card text-center shadow  border-0 h-100">
+                <div class="card-body ">
+                    <img src="../images/rock.svg" class="card-img-top" alt="Rock" />
 
-    <div class="col-sm-3 mb-3 mb-sm-3">
-        <div class="card">
-            <img src="../images/rock.svg" class="card-img-top" alt="Rock" />
-            <div class="card-body">
-                <h5 class="card-title">Rock ´n Roll</h5>
-                <p class="card-text">Para los fanaticos del metal</p>
-                <a href="/groups/list/rock" class="btn btn-primary">Ver mas</a>
+                    <h5 class="card-title">Rock ´n Roll</h5>
+                    <p class="card-text">Larga vida al <br> Rock n Roll</p>
+                    <a href="/groups/list/rock" class="btn btn-secondary">Ver mas</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-3 mb-3 mb-sm-3">
-        <div class="card">
-            <img src="../images/pop.svg" class="card-img-top" alt="POP" />
-            <div class="card-body">
-                <h5 class="card-title">POP</h5>
-                <p class="card-text">Sin el POP la vida es un error</p>
-                <a href="/groups/list/pop" class="btn btn-primary">Ver mas</a>
+        <div class="col-sm-3 mb-3 mb-sm-3">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/pop.svg" class="card-img-top" alt="POP" />
+
+                    <h5 class="card-title">POP</h5>
+                    <p class="card-text">Sin el POP la vida es un error</p>
+                    <a href="/groups/list/pop" class="btn btn-secondary">Ver mas</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-3 mb-3 mb-sm-3">
-        <div class="card">
-            <img src="../images/flamenco.svg" class="card-img-top" alt="Flamenco" />
-            <div class="card-body">
-                <h5 class="card-title">Flamenco</h5>
-                <p class="card-text">Ole, ole ... y Olé!</p>
-                <a href="/groups/list/flamenco" class="btn btn-primary">Ver mas</a>
+        <div class="col-sm-3 mb-3 mb-sm-3">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/flamenco.svg" class="card-img-top" alt="Flamenco" />
+
+                    <h5 class="card-title">Flamenco</h5>
+                    <p class="card-text">Al ritmno de las palmas...Ole, ole ... y Olé!</p>
+                    <a href="/groups/list/flamenco" class="btn btn-secondary">Ver mas</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-3 mb-3 mb-sm-3">
-        <div class="card">
-            <img src="../images/salsa.svg" class="card-img-top" alt="Salsa" />
-            <div class="card-body">
-                <h5 class="card-title">Salsa</h5>
-                <p class="card-text">Camina y llegaras lejos, baila y seras libre</p>
-                <a href="/groups/list/salsa" class="btn btn-primary">Ver mas</a>
+        <div class="col-sm-3 mb-3 mb-sm-3 ">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/salsa.svg" class="card-img-top" alt="Salsa" />
+
+                    <h5 class="card-title">Salsa</h5>
+                    <p class="card-text">Camina y llegaras lejos, baila y seras libre</p>
+                    <a href="/groups/list/salsa" class="btn btn-secondary">Ver mas</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-3 mb-3 mb-sm-3">
-        <div class="card">
-            <img src="../images/dj.svg" class="card-img-top" alt="Salsa" />
-            <div class="card-body">
-                <h5 class="card-title">Salsa</h5>
-                <p class="card-text">De aquí no nos vamos hasta que no salga el sol.</p>
-                <a href="/groups/list/dj" class="btn btn-primary">Ver mas</a>
+        <div class="col-sm-3 mb-3 mb-sm-3 ">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/dj.svg" class="card-img-top" alt="Dj" />
+
+                    <h5 class="card-title">Djs</h5>
+                    <p class="card-text">De aquí no nos vamos hasta que no salga el sol.</p>
+                    <a href="/groups/list/dj" class="btn btn-secondary">Ver mas</a>
+                </div>
             </div>
         </div>
-    </div>
+         <div class="col-sm-3 mb-3 mb-sm-3 ">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/mariachi.svg" class="card-img-top" alt="Mariachis" />
 
+                    <h5 class="card-title">Mariachis</h5>
+                    <p class="card-text">AY AY AY AY Que viva Mexico mis cuates .</p>
+                    <a href="/groups/list/dj" class="btn btn-secondary">Ver mas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 mb-3 mb-sm-3 ">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/infantil.svg" class="card-img-top" alt="Infantiles" />
+
+                    <h5 class="card-title">Infantiles</h5>
+                    <p class="card-text">Tengo una vaca lechera No es una vaca cualquiera...</p>
+                    <a href="/groups/list/dj" class="btn btn-secondary">Ver mas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 mb-3 mb-sm-3 ">
+            <div class="card text-center shadow border-0 h-100">
+                <div class="card-body">
+                    <img src="../images/clasica.svg" class="card-img-top" alt="Clasica" />
+
+                    <h5 class="card-title">Clasica</h5>
+                    <p class="card-text"> La música clásica reduce el estrés y baja la presión...</p>
+                    <a href="/groups/list/dj" class="btn btn-secondary">Ver mas</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

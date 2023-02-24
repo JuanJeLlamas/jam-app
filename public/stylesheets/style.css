@@ -62,6 +62,29 @@ form {
   color: white;
 } */
 
+.hero {
+  min-height: 75vh;
+  background: #00000061 url(https://img.freepik.com/free-photo/melody-music-sound-key-artistic-icon-sign-concept_53876-124306.jpg?w=996&t=st=1677222862~exp=1677223462~hmac=e9478f1b09c3b57a20db3c88714d8991ca3911070d298610ecd9a6d031c113eb) center center no-repeat;
+  background-size: cover;
+  position: relative;
+  box-shadow:0px 5px 5px rgba(13, 3, 13, 0.125);
+  margin-bottom: 3em;
+ 
+}
+/* .hero:before {
+  content:"";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+} */
+.hero-content {
+  position: absolute;
+  bottom: 15px;
+
+}
 .card-img-top{
   height: 150px;
   max-width: auto;
@@ -70,4 +93,12 @@ form {
 
 .divPerfil {
   margin: 100px;
+}
+
+.navbar{
+  box-shadow:0px 5px 5px rgba(13, 3, 3, 0.125);
+
+}
+.textshadow{
+  text-shadow: 0px 5px 5px rgba(13, 3, 13, 0.233);
 }

@@ -1,6 +1,6 @@
 <h2>¡Bienvenido a tu perfil {{details.username}}!</h2>
 
-<img src="{{details.imageProfile}}" alt="Image" />
+<img src="{{details.imageProfile}}" alt="Image" width="350px" />
 
 <h5>Nombre de usuario: {{details.username}} </h5>
 <h5>Email: {{details.email}} </h5>
@@ -16,7 +16,7 @@
   <button type="submit"> Adjuntar Imagenes </button>
 </form>
 
-{{#each details.imageShow}}
+{{!-- {{#each details.imageShow}}
 
 <img src="{{this}}" alt="" width="150px" />
 
@@ -24,7 +24,7 @@
   <button type="submit">Borrar Imagen</button>
 </form>
 
-{{/each}}
+{{/each}} --}}
 
 
 <!-- profile.hbs -->
@@ -32,7 +32,7 @@
   <h2>Mis imágenes:</h2>
   {{#each details.imageShow}}
     <div>
-      <img src="{{this}}" alt="Imagen del usuario">
+      <img src="{{this}}" alt="Imagen del usuario" width="250px">
       <input type="checkbox" name="imagesToDelete" value="{{this}}">
     </div>
   {{/each}}

@@ -1,6 +1,11 @@
 const express = require("express");
 const User = require("../models/User.model");
 const router = express.Router();
+const {
+  isLoggedIn,
+  isArtist,
+  isParticular,
+} = require('../middleware/user-middlewares.js')
 
 // router.get("/:id", async (req, res, next) => {
 //   //  const userParticular = req.session.activeUser
@@ -19,7 +24,7 @@ const router = express.Router();
 
 //Necesitamos requerir la id del artista para añadirlo al array del usuario.
 //Se hara redirect al mismo lugar despues de pulsar
-router.post("/:artistId", async (req, res, next) => {
+router.post("/:artistId", isLoggedIn, async (req, res, next) => {
  
   const { artistId } = req.params;
   const userParticular = req.session.activeUser._id;
@@ -36,7 +41,7 @@ router.post("/:artistId", async (req, res, next) => {
   }
 });
 
-router.post("/:artistId/del", async (req, res, next) => {
+router.post("/:artistId/del", isLoggedIn, async (req, res, next) => {
  
   const { artistId } = req.params;
   const userParticular = req.session.activeUser._id;
