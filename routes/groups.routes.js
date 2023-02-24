@@ -7,7 +7,7 @@ const router = express.Router()
 router.get('/list/:genre', async (req, res, next) => {
   
   const genre = req.params.genre
-  console.log(genre)
+  //console.log(genre)
 
   try {
     const response = await User.find({ genre: { $in: [genre] } })
@@ -23,43 +23,43 @@ router.get('/list/:genre', async (req, res, next) => {
 // GET "/groups/:id/details" => renderiza los detalles del grupo musical seleccionado
 router.get('/:id/details', async (req, res, next) => {
   const { id } = req.params; // id del artista
-  const creadorUsername = req.session.activeUser.username; // usuario que crea comentario
-  console.log(creadorUsername)
-  let mismaId = false;
+  const creatorUsername = req.session.activeUser._id; // usuario que crea comentario
+  console.log("hola", creatorUsername)
 
   try {
     
     
     const artistDetails = await User.findById(id)
     const commentDetails = await Comments.find({ artistUser: id }).populate("creator")
-    //console.log("COMENTARIOS", commentDetails.creator)
-
-    for (let i = 0; i < commentDetails.length; i++) {
-      let userName = commentDetails[i].creator.username
-      console.log("ARRAY DE CREADORES", userName );
-      
-      if(userName === creadorUsername) {
-        mismaId = true;
-      }
-      }
+    let cloneCommentsDetails = JSON.parse(JSON.stringify(commentDetails))
     
 
-    //console.log("El creador del comentario es", commentDetails)
+
+    //console.log("CON LA MISMA ID", commentDetails)
+
+    for (let i = 0; i < cloneCommentsDetails.length; i++) {
+      
+      cloneCommentsDetails[i].mismaId=false;
+      let userName = cloneCommentsDetails[i].creator._id
+      console.log("adios", userName)
+    
+      if(userName === creatorUsername) {
+        cloneCommentsDetails[i].mismaId = true;
+      } 
+     console.log("El creador del comentario es", cloneCommentsDetails)
+
+      }
+    
+    
     res.render('groups/details-artist.hbs', {
       artistDetails: artistDetails,
-      commentDetails: commentDetails,
-      mismaId: mismaId,
+      cloneCommentsDetails: cloneCommentsDetails,
   
     })
   } catch (error) {
     next(error)
   }
 })
-
-
-
-
-
 
 
 module.exports = router

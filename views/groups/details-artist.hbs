@@ -14,8 +14,8 @@
 <h5>Caniciones: {{artistDetails.songs}} </h5>
 
 <h5>Comentarios:</h5>
-{{#each commentDetails}}
-<h6>{{this.creator.username}}</h6>
+{{#each cloneCommentsDetails}}
+<h5>{{this.creator.username}}</h5>
 <h6>{{this.comment}}</h6>
 
 {{#if mismaId}}
