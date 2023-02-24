@@ -1,32 +1,35 @@
+<section class="col-8 container shadow border-0 justify-content-center bg-light p-3 border secciones">
+
 <h2>Edita tu perfil</h2>
 
 
 <form action="/private-profile/edit" method="POST" enctype="multipart/form-data"  >
 
 <label>
-  <input type="file" name="imageProfile" value="{{userInfo.imageProfile}}" width="150px"/>
+  <input type="file" name="imageProfile" value="{{userInfo.imageProfile}}" width="150px" class="form-control"/>
 </label>
 <br>
 <label for="">Nombre de usuario:  
-<input type="text" name="username" value="{{userInfo.username}}" />
+<input type="text" name="username" value="{{userInfo.username}}" class="form-control" />
 </label>
 <br>
 <label for="">Email:  
-<input type="email" name="email" value="{{userInfo.email}}" />
+<input type="email" name="email" value="{{userInfo.email}}" class="form-control"/>
 </label>
 <br>
 </label>
 <label for="">Telefono:  
-<input type="tel" name="contact" value="{{userInfo.contact}}" />
+<input type="tel" name="contact" value="{{userInfo.contact}}" class="form-control" />
 </label>
 
 <br>
 {{#if isUserArtist}}
-  <label for=""></label>
+  <label for="" class="form-label"></label>
 
-  <label for="genre">Género musical</label>
+  <label for="genre" class="form-label">Género musical</label>
 
-  <select name="genre">
+  <select name="genre" class="form-select form-select-sm">
+    <option selected>Elige un estilo musical</option>
     <option value="salsa">Salsa</option>
     <option value="rock">Rock</option>
     <option value="pop">Pop</option>
@@ -38,9 +41,9 @@
   </select>
   <br>
 
-  <label for="">Descripcion</label>
+  <label for="" class="form-label">Descripcion</label>
   <br />
-  <textarea name="description" rows="10" cols="40">{{userInfo.description}}</textarea>
+  <textarea name="description" rows="10" cols="40" class="form-control">{{userInfo.description}} </textarea>
   <br />
  
 
@@ -48,7 +51,7 @@
 {{/if}}
 
   <br />
-  <button type="submit"> Guardar cambios </button>
+  <button type="submit" class="btn btn-secondary"> Guardar cambios </button>
 
 </form>
 
